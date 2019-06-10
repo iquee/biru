@@ -9,7 +9,7 @@ public class NextIdSequence {
 	@Id
     private String id;
  
-    private long seq;
+    private Long seq;
 
 	public NextIdSequence() {		
 	}
@@ -26,7 +26,7 @@ public class NextIdSequence {
 		return seq;
 	}
 
-	public void setSeq(long seq) {
+	public void setSeq(Long seq) {
 		this.seq = seq;
 	}
 }
