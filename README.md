@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/iquee/biru.svg?branch=master)](https://travis-ci.org/iquee/biru)
+
 # Instructions
 
 Some instructions to build, run and test this microservice
