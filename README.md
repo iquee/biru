@@ -1,8 +1,8 @@
 # Instructions
 
-Some instructions to build, run and test this spring-boot application
+Some instructions to build, run and test this microservice
 
-Clone the repository run this commands in root directory to:
+Clone the repository, access the folder and run this commands in root directory to:
 
 ###### run the application
 `mvn spring-boot:run`
@@ -11,24 +11,21 @@ Clone the repository run this commands in root directory to:
 > To see the API Documentation and Try: [Swagger Rest API's](http://localhost:9000/swagger-ui.html)
 
 * First build/run may take some minutes to download all dependencies
-* The application is set to run with a in-memory database, H2. There is a option to change to MySQL in application.properties
 * There is also a Docker image to test this application
 
 ###### run jUnit tests
 `mvn test`
 
-###### run jMeter. Result file will be available in: /biru/src/test/jMeter/results/xxxxxxxx.csv 
-`mvn jmeter:jmeter`
-* to run JMeter test, before is necessary run the application: `mvn spring-boot:run`
-
-###### run all tests(jUnit & jMeter) and build the .jar
-`mvn clean install`
-
 ###### create Docker image
-`docker build -t iquee/biru:1.0.0 .`
-
-###### pull image from Docker Hub
-`docker pull iquee/biru:1.0.0`
+`docker build -t iquee/biru .`
 
 ###### run Docker image
-`docker run -p 9000:9000 iquee/biru:1.0.0`
+- to run this image standalone, FIRST is necessary to pull & run another image: mongo
+`docker run -d -p 27017:27017 --name mongo mongo`
+
+- after, run command to pull/run this project image(if you have created image, Docker will use it. If not, Docker will pull from docker-hub)
+`docker run --link mongo --name biru-spring-boot -p 9000:9000 iquee/biru`
+
+###### run docker-compose
+- to pull automatic mongo and biru-application from Docker Hub, run this command(You must have docker-compose installed)
+`docker-compose up`
