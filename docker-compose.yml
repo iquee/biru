@@ -4,7 +4,6 @@ services:
   springboot:
     build: .
     image: iquee/biru:latest
-    restart: always
     container_name: biru-springboot
     ports:
       - 9000:9000
@@ -22,7 +21,7 @@ services:
     ports:  
       - 27017:27017
     volumes:
-      - $HOME/dev/docker/mongodb:/data/db
+      - $HOME/docker/biru/mongodb:/data/db
     
 networks:
   zx:
