@@ -1,0 +1,28 @@
+version: '3.1'
+
+services:
+  springboot:
+    build: .
+    image: iquee/biru:latest
+    restart: always
+    container_name: biru-springboot
+    ports:
+      - 9000:9000
+    working_dir: /opt/app
+    networks:
+      - zx
+    depends_on:
+      - mongo
+  
+  mongo:
+    image: mongo
+    container_name: biru-mongo
+    networks:
+      - zx
+    ports:  
+      - 27017:27017
+    volumes:
+      - $HOME/dev/docker/mongodb:/data/db
+    
+networks:
+  zx:
