@@ -3,6 +3,7 @@ package com.luiztaira.repository;
 import java.util.Optional;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.luiztaira.domain.Pdv;
@@ -19,5 +20,8 @@ import com.luiztaira.domain.Pdv;
 @Repository
 public interface PdvRepository extends MongoRepository<Pdv, Long> {
 	
-	Optional<Pdv> findById(Long id);	
+	Optional<Pdv> findById(Long id);
+	
+    @Query("{coverageArea: {$geoIntersects: {$geometry: {type: 'Point' ,coordinates: [?0, ?1]}}}})")
+	Optional<Pdv> search(Double lng, Double lat);
 }

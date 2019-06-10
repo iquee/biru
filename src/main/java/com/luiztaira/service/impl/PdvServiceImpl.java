@@ -60,9 +60,13 @@ public class PdvServiceImpl implements PdvService {
 
 	@Override
 	@Transactional(propagation = Propagation.NOT_SUPPORTED)
-	public Pdv search(List<Double> coordinates) throws PdvException {
-		// TODO Auto-generated method stub
-		return null;
+	public PdvResponseDTO search(List<Double> coordinates) throws PdvException {
+		Optional<Pdv> optional = pdvRepository.search(coordinates.get(0), coordinates.get(1));
+		if(optional.isPresent()) {
+			return new PdvResponseDTO(optional.get());
+		} else {
+			throw new PdvException("No pdv founded");
+		}
 	}
 
 	/**
