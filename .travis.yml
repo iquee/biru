@@ -1,0 +1,14 @@
+language: java
+sudo: false
+branches:
+  only:
+  - master
+  - stable
+  - ready-to-go
+jdk:  
+  - oraclejdk8
+install: true
+script:
+  - mvn -N io.takari:maven:wrapper
+  - ./mvnw install
+  - mvn test
