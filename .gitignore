@@ -2,6 +2,8 @@
 *.class
 *.classpath
 *.project
+.settings
+.vscode
 
 # Log file
 *.log

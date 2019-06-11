@@ -34,7 +34,7 @@ public interface PdvService extends Validator<PdvRequestDTO>, Converter<PdvReque
 	 * Find a pdv by id
 	 *
 	 * @param id
-	 * @return pdv
+	 * @return PdvResponseDTO
 	 *
 	 * @throws PdvException
 	 */
@@ -42,9 +42,9 @@ public interface PdvService extends Validator<PdvRequestDTO>, Converter<PdvReque
 
 	/**
 	 * @param coordinates
-	 * @return pdv
+	 * @return PdvResponseDTO
 	 *
 	 * @throws PdvException
 	 */
-	Pdv search(List<Double> coordinates) throws PdvException;
+	PdvResponseDTO search(List<Double> coordinates) throws PdvException;
 }
