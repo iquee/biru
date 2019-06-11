@@ -25,20 +25,20 @@
 <p>Clone the repository, access the folder and run these commands in root directory to:</p>
 
 ##### Run application: Using docker-compose, enter this command to pull automatic biru-application and mongo from Docker Hub. <strong>(You must have docker-compose installed)</strong>:
-	> docker-compose up
+	docker-compose up
 
 ##### Run jUnit tests: this tests will run with a embedded MongoDB. <strong>(You must have Maven installed)</strong>:
 <em>Important 1: to run test, no instance of mongodb:27017 can be on</em><br>
 <em>Important 2: to run test, this [json](https://github.com/ZXVentures/code-challenge/blob/master/files/pdvs.json) will be imported on startup</em><br>
 <em>Important 3: To verify the tests run successfully, access [Travis-CI](https://travis-ci.org/iquee/biru)</em><br>
 
-	> mvn test
+	mvn test
 
 ##### Create Docker image for this application:
-	> docker build -t iquee/biru .
+	docker build -t iquee/biru .
 
 ##### Run Docker image: to run this image standalone, FIRST is necessary to pull/run another image: mongo
-	> docker run -d -p 27017:27017 --name mongodb mongo
+	docker run -d -p 27017:27017 --name mongodb mongo
 
 ##### After mongo: run command to pull/run this project image(if you have created image, Docker will use it. If not, Docker will pull from docker-hub):
 	docker run --link mongodb --name biru-spring-boot -p 9000:9000 iquee/biru
