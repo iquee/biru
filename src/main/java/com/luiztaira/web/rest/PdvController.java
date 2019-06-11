@@ -81,7 +81,10 @@ public class PdvController extends BaseController {
 			@ApiResponse(code = 200, message = "Given a specific lng & lat, return nearest pdv. Ex.: -49.379279, -20.816612") })
 	@RequestMapping(value = "/findNearestPdv", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody PdvResponseDTO search(@RequestParam List<Double> coordinates) {
-		return pdvService.search(coordinates);
+		PdvResponseDTO pdv = pdvService.search(coordinates);
+		if(pdv == null)
+			new PdvResponseDTO();
+		return pdv;
 	}
 
 	@ExceptionHandler(DuplicateKeyException.class)

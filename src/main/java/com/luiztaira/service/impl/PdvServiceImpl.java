@@ -61,11 +61,14 @@ public class PdvServiceImpl implements PdvService {
 	@Override
 	@Transactional(propagation = Propagation.NOT_SUPPORTED)
 	public PdvResponseDTO search(List<Double> coordinates) throws PdvException {
-		Optional<Pdv> optional = pdvRepository.search(coordinates.get(0), coordinates.get(1));
-		if(optional.isPresent()) {
-			return new PdvResponseDTO(optional.get());
+		// check if location is inside any coverage area
+		List<Pdv> pdvs = pdvRepository.searchIfInsideCoverageArea(coordinates.get(0), coordinates.get(1));		
+		if(!pdvs.isEmpty()) {
+			// if inside, search the nearest pdv
+			List<Pdv> nearest = pdvRepository.searchNearestPdv(coordinates.get(0), coordinates.get(1));			
+			return new PdvResponseDTO(nearest.get(0));
 		} else {
-			throw new PdvException("No pdv founded");
+			return null;
 		}
 	}
 
