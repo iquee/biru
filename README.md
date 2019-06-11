@@ -38,10 +38,10 @@
 	> docker build -t iquee/biru .
 
 ##### Run Docker image: to run this image standalone, FIRST is necessary to pull/run another image: mongo
-	> docker run -d -p 27017:27017 --name mongo mongo
+	> docker run -d -p 27017:27017 --name mongodb mongo
 
 ##### After mongo: run command to pull/run this project image(if you have created image, Docker will use it. If not, Docker will pull from docker-hub):
-	> docker run --link mongo --name biru-spring-boot -p 9000:9000 iquee/biru
+	docker run --link mongodb --name biru-spring-boot -p 9000:9000 iquee/biru
 
 
 # Accessing the application

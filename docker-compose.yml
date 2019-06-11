@@ -4,7 +4,7 @@ services:
   springboot:
     build: .
     image: iquee/biru:latest
-    container_name: biru-springboot
+    container_name: biru-springboot-compose
     ports:
       - 9000:9000
     working_dir: /opt/app
@@ -15,7 +15,7 @@ services:
   
   mongo:
     image: mongo
-    container_name: biru-mongo
+    container_name: biru-mongo-compose
     networks:
       - zx
     ports:  
