@@ -28,7 +28,7 @@
 	> docker-compose up
 
 ##### Run jUnit tests: this tests will run with a embedded MongoDB. <strong>(You must have Maven installed)</strong>:
-<em>Important 1: to run test, no instance of mongodb:27017 can be on</em>
+<em>Important 1: to run test, no instance of mongodb:27017 can be on</em><br>
 <em>Important 2: to run test, this [json](https://github.com/ZXVentures/code-challenge/blob/master/files/pdvs.json) will be imported on startup</em>
 
 	> mvn test
