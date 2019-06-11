@@ -32,7 +32,7 @@ First, clone the repository, access the folder and execute these commands in roo
 
 1. <strong>by docker-compose</strong>: enter this command to pull automatic biru-springboot and mongo from Docker Hub. 
 	```sh
-	docker-compose -f docker-compose-run.yml up
+	docker-compose -f docker-compose.yml up
     ```
 
 2. <strong>by Docker images standalone</strong>: execute these command in this order:
@@ -60,7 +60,7 @@ To execute tests, it's necessary to use the docker-compose. jUnit tests are exec
 - <em>Important 2: To verify the tests run successfully in a SaaS CI, access [Travis-CI](https://travis-ci.org/iquee/biru)</em><br>
 
 	```sh
-	docker-compose -f docker-compose-test.yml up
+	docker-compose -f docker-compose.test.yml up
     ```
 
 ## Contact
