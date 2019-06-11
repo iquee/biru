@@ -37,13 +37,13 @@ First, clone the repository, access the folder and execute these commands in roo
 
 2. <strong>by Docker images standalone</strong>: execute these command in this order:
 	```sh
-	docker run -d -p 27017:27017 --name mongodb mongo
+	docker run -d -p 27017:27017 --name mongo mongo
     ```    
     ```sh
 	docker build -t iquee/biru .
     ```	
     ```sh
-	docker run --link mongodb --name biru-spring-boot -p 9000:9000 iquee/biru
+	docker run --link mongo --name biru-spring-boot -p 9000:9000 iquee/biru
     ```
     <em>If you have created image, Docker will use it. If not, Docker will pull from Docker Hub.</em>
 
