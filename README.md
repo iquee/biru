@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/iquee/biru.svg?branch=master)](https://travis-ci.org/iquee/biru)
 
 # Challenge
-<p>This application is a solution for [ZX Code Challenge | Backend](https://github.com/ZXVentures/code-challenge/blob/master/backend.md).</p>
+<p>This application is a solution for ZX Code Challenge | [Backend](https://github.com/ZXVentures/code-challenge/blob/master/backend.md).</p>
 <p>The following technologies were used for the development:</p>
  	
 * [Java 8](https://www.java.com/pt_BR/download/faq/java8.xml)
