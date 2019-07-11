@@ -54,7 +54,7 @@ public class PdvRequestDTO implements Serializable {
 	}
 
 	public String getDocument() {
-		return document;
+		return normnalizeDocument(document);
 	}
 
 	public void setDocument(String document) {
@@ -75,5 +75,11 @@ public class PdvRequestDTO implements Serializable {
 
 	public void setCoverageArea(Map<String, Object> coverageArea) {
 		this.coverageArea = coverageArea;
+	}
+	
+	public static String normnalizeDocument(String document) {
+		if (document != null && !document.equals(""))
+			document = document.replaceAll("\\.", "").replaceAll("/", "").replaceAll("\\-", "");
+		return document;
 	}
 }

@@ -19,9 +19,9 @@ import com.luiztaira.domain.Pdv;
  *
  */
 @Repository
-public interface PdvRepository extends MongoRepository<Pdv, Long> {
+public interface PdvRepository extends MongoRepository<Pdv, String> {
 	
-	Optional<Pdv> findById(Long id);
+	Optional<Pdv> findById(String id);
 	
     @Query("{coverageArea: {$geoIntersects: {$geometry: {type: 'Point' ,coordinates: [?0, ?1]}}}})")
 	List<Pdv> searchIfInsideCoverageArea(Double lng, Double lat);
