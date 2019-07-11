@@ -2,7 +2,6 @@ package com.luiztaira.web.rest;
 
 import static com.luiztaira.web.rest.BaseController.API;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -10,22 +9,19 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.context.request.WebRequest;
 
-import com.luiztaira.exception.ExceptionResponse;
-import com.luiztaira.exception.PdvException;
+import com.luiztaira.exception.PdvServerException;
 import com.luiztaira.service.PdvService;
 import com.luiztaira.web.rest.dto.PdvRequestDTO;
 import com.luiztaira.web.rest.dto.PdvResponseDTO;
@@ -51,13 +47,14 @@ public class PdvController extends BaseController {
 	 * @throws Exception
 	 */
 	@ApiOperation(value = "Create a single pdv", response = Long.class)
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Successfully pdv created"),
+	@ApiResponses(value = { 
+			@ApiResponse(code = 201, message = "Successfully pdv created"),
 			@ApiResponse(code = 401, message = "You are not authorized to create a pdv"),
 			@ApiResponse(code = 403, message = "Forbidden"),
-			@ApiResponse(code = 404, message = "The resource you were trying to reach is not found") })
-	@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody Long create(@Valid @RequestBody PdvRequestDTO requestDto) throws PdvException {
-		return pdvService.createOrUpdate(requestDto);
+			@ApiResponse(code = 409, message = "Conflict") })
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody ResponseEntity<Long> create(@Valid @RequestBody PdvRequestDTO requestDto) throws PdvServerException {
+		return new ResponseEntity<Long>(pdvService.createOrUpdate(requestDto), HttpStatus.CREATED);
 	}
 
 	/**
@@ -65,11 +62,12 @@ public class PdvController extends BaseController {
 	 * @return {@link PdvResponseDTO}
 	 */
 	@ApiOperation(value = "Get pdv by id", response = PdvResponseDTO.class)
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "PdvResponseDTO object"),
+	@ApiResponses(value = { 
+			@ApiResponse(code = 200, message = "PdvResponseDTO object"),
 			@ApiResponse(code = 404, message = "The resource you were trying to reach is not found") })
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody PdvResponseDTO getById(@PathVariable("id") Long id) {
-		return pdvService.getById(id);
+	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody ResponseEntity<PdvResponseDTO> getById(@PathVariable("id") Long id) {		
+		return new ResponseEntity<PdvResponseDTO>(pdvService.getById(id), HttpStatus.OK);
 	}
 
 	/**
@@ -78,20 +76,10 @@ public class PdvController extends BaseController {
 	 */
 	@ApiOperation(value = "Find nearest pdv from specific location", response = PdvResponseDTO.class)
 	@ApiResponses(value = {
-			@ApiResponse(code = 200, message = "Given a specific lng & lat, return nearest pdv. Ex.: -49.379279, -20.816612") })
-	@RequestMapping(value = "/findNearestPdv", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody PdvResponseDTO search(@RequestParam List<Double> coordinates) {
-		PdvResponseDTO pdv = pdvService.search(coordinates);
-		if(pdv == null)
-			new PdvResponseDTO();
-		return pdv;
-	}
-
-	@ExceptionHandler(DuplicateKeyException.class)
-	public ResponseEntity<ExceptionResponse> handleConflictException(Exception ex, WebRequest request) {
-		ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), "Document already registred",
-				HttpStatus.INTERNAL_SERVER_ERROR.value(), request.getDescription(false).replaceAll("uri=", ""),
-				HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase());
-		return new ResponseEntity<>(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+			@ApiResponse(code = 200, message = "Given a specific lng & lat, return nearest pdv. Ex.: -49.379279, -20.816612"),
+			@ApiResponse(code = 404, message = "The resource you were trying to reach is not found") })
+	@GetMapping(value = "/findNearestPdv", produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody ResponseEntity<PdvResponseDTO> search(@RequestParam List<Double> coordinates) {		
+		return new ResponseEntity<PdvResponseDTO>(pdvService.search(coordinates), HttpStatus.OK);
 	}
 }

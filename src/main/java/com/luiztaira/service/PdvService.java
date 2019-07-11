@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.luiztaira.domain.Pdv;
-import com.luiztaira.exception.PdvException;
+import com.luiztaira.exception.PdvServerException;
 import com.luiztaira.utils.Converter;
 import com.luiztaira.utils.Validator;
 import com.luiztaira.web.rest.dto.PdvRequestDTO;
@@ -26,9 +26,9 @@ public interface PdvService extends Validator<PdvRequestDTO>, Converter<PdvReque
 	 * @param dto
 	 * @return pdv id
 	 *
-	 * @throws PdvException
+	 * @throws PdvServerException
 	 */
-	Long createOrUpdate(PdvRequestDTO dto) throws PdvException;
+	Long createOrUpdate(PdvRequestDTO dto) throws PdvServerException;
 
 	/**
 	 * Find a pdv by id
@@ -36,15 +36,15 @@ public interface PdvService extends Validator<PdvRequestDTO>, Converter<PdvReque
 	 * @param id
 	 * @return PdvResponseDTO
 	 *
-	 * @throws PdvException
+	 * @throws PdvServerException
 	 */
-	PdvResponseDTO getById(Long id) throws PdvException;
+	PdvResponseDTO getById(Long id) throws PdvServerException;
 
 	/**
 	 * @param coordinates
 	 * @return PdvResponseDTO
 	 *
-	 * @throws PdvException
+	 * @throws PdvServerException
 	 */
-	PdvResponseDTO search(List<Double> coordinates) throws PdvException;
+	PdvResponseDTO search(List<Double> coordinates) throws PdvServerException;
 }
