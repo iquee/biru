@@ -9,14 +9,13 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.luiztaira.domain.Pdv;
 import com.luiztaira.utils.GeoJsonMultiPolygonSerializer;
 import com.luiztaira.utils.GeoJsonPointSerializer;
-import com.luiztaira.utils.NormalizeDocument;
 
 import io.swagger.annotations.ApiModelProperty;
 
 public class PdvResponseDTO implements Serializable {
 
-	@ApiModelProperty(notes = "i", example = "100")
-	private Long id;
+	@ApiModelProperty(notes = "i", example = "5d25f8b95efa9e39005d83d1")
+	private String id;
 
 	@ApiModelProperty(notes = "Trading name", example = "Distribuidora TAP")
 	private String tradingName;
@@ -52,11 +51,11 @@ public class PdvResponseDTO implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -77,7 +76,7 @@ public class PdvResponseDTO implements Serializable {
 	}
 
 	public String getDocument() {
-		return NormalizeDocument.normnalizeToResponse(document);
+		return normnalizeDocument(document);
 	}
 
 	public void setDocument(String document) {
@@ -98,6 +97,13 @@ public class PdvResponseDTO implements Serializable {
 
 	public void setCoverageArea(GeoJsonMultiPolygon coverageArea) {
 		this.coverageArea = coverageArea;
+	}
+	
+	public static String normnalizeDocument(String document) {
+		if (document != null && document.length() == 14)
+			document = document.substring(0, 2) + "." + document.substring(2, 5) + "." + document.substring(5, 8) + "/"
+					+ document.substring(8, 12) + "-" + document.substring(12, 14);
+		return document;
 	}
 
 }
