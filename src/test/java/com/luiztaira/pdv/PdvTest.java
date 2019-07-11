@@ -6,25 +6,16 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.core.annotation.Order;
 import org.springframework.dao.DuplicateKeyException;
 
 import com.luiztaira.exception.PdvNotFoundException;
@@ -43,54 +34,17 @@ public class PdvTest {
 	public PdvTest(PdvService pdvService) {
 		PdvTest.pdvService = pdvService;
 	}
-
-	@BeforeAll
-	public static void loadFileToTest() {
-		// parse file pdvs.json
-		// file imported from: https://github.com/ZXVentures/code-challenge/edit/master/files/pdvs.json
-		// pdv ID's removed from file. New ones will be created		 
-		try {
-			ClassLoader classLoader = PdvTest.class.getClassLoader();
-			URL resource = classLoader.getResource("pdvs.json");
-			FileReader fileReader = new FileReader(new File(resource.getFile()));
-			Object file = new JSONParser().parse(fileReader);
-			PdvTest.obj = (JSONObject) file;
-		} catch (IOException | ParseException e) {
-			throw new PdvServerException("File not found or invalid file: " + e.getMessage());
-		}
-	}
-
-	// checked tests
+	
 	@Test
-	@Order(1)
-	public void savePdvs() {
-		// getting pdvs and save at mongo
-		JSONArray pdvs = (JSONArray) PdvTest.obj.get("pdvs");
-		int size = pdvs.size();
-		int created = 0;
-		for (int i = 0; i < pdvs.size(); i++) {
-			JSONObject pdv = (JSONObject) pdvs.get(i);
-			Map<String, Object> address = (Map<String, Object>) pdv.get("address");
-			Map<String, Object> coverageArea = (Map<String, Object>) pdv.get("coverageArea");
-			pdvService.createOrUpdate(new PdvRequestDTO(pdv.get("tradingName").toString(),
-					pdv.get("ownerName").toString(), pdv.get("document").toString(), address, coverageArea));
-			created++;
-		}
-		
-		assertThat(size, equalTo(created));
-	}
-	@Test
-	@Order(2)
 	public void testCreatePdv() throws Exception {
-		Long id = pdvService.createOrUpdate(buildPdv("Boteco Legal", "Zé Sorriso", "29.165.498/0001-24"));
+		String id = pdvService.create(buildPdv("Boteco Legal", "Zé Sorriso", "29.165.498/0001-24"));
 		
 		assertNotNull(id);
 	}
 
 	@Test
-	@Order(3)
 	public void testGetPdvById() throws Exception {
-		Long id = pdvService.createOrUpdate(buildPdv("Bar da Alegria", "João Risada", "25.221.259/0001-93"));
+		String id = pdvService.create(buildPdv("Bar da Alegria", "João Risada", "25.221.259/0001-93"));
 		PdvResponseDTO pdv = pdvService.getById(id);
 		
 		assertThat(pdv.getTradingName(), equalTo("Bar da Alegria"));
@@ -98,11 +52,10 @@ public class PdvTest {
 	}
 
 	@Test
-	@Order(4)
 	public void testSearchNearestPdv() throws Exception {
 		List<Double> coordinates = new ArrayList<>();
 		coordinates.add(-49.379279);
-		coordinates.add(-20.816612);		
+		coordinates.add(-20.816612);
 		PdvResponseDTO pdv = pdvService.search(coordinates);
 		
 		// based on pdvs.json file imported
@@ -111,20 +64,18 @@ public class PdvTest {
 
 	// fail tests
 	@Test
-	@Order(5)
 	public void testSavePdvExistedDocument() throws PdvServerException {
 		DuplicateKeyException thrown = assertThrows(DuplicateKeyException.class,
-				() -> pdvService.createOrUpdate(buildPdv("Bar da Alegria", "João Risada", "25.221.259/0001-93")),
+				() -> pdvService.create(buildPdv("Bar da Alegria", "João Risada", "25.221.259/0001-93")),
 				"Duplicate document");
 		assertTrue(thrown.getMessage().contains("25221259"));
 	}
 	
 	@Test
-	@Order(6)
 	public void testPdvNotFound() throws Exception {
 		PdvNotFoundException thrown = assertThrows(PdvNotFoundException.class,
-				() -> pdvService.getById(-1L), "No PDV found for id: -1");
-		assertTrue(thrown.getMessage().contains("No PDV found for id: -1"));
+				() -> pdvService.getById("x"), "No PDV found for id: x");
+		assertTrue(thrown.getMessage().contains("No PDV found for id: x"));
 	}
 
 	private PdvRequestDTO buildPdv(String tradingName, String ownerName, String document) {

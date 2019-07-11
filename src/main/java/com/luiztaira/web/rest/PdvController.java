@@ -6,8 +6,6 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -19,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.luiztaira.exception.PdvServerException;
@@ -35,51 +34,42 @@ import io.swagger.annotations.ApiResponses;
 @RequestMapping(API + "/pdv")
 @Api(value = "PDV controller")
 public class PdvController extends BaseController {
-
-	Logger logger = LoggerFactory.getLogger(PdvController.class);
-
+	PdvService pdvService;	
+	
 	@Autowired
-	PdvService pdvService;
-
-	/**
-	 * @param PdvRequestDTO
-	 * @return Long
-	 * @throws Exception
-	 */
-	@ApiOperation(value = "Create a single pdv", response = Long.class)
+	public PdvController(PdvService pdvService){
+		this.pdvService = pdvService;
+	}
+	
+	@ApiOperation(value = "Create a single pdv", response = String.class, code = 201)
+	@ResponseStatus(value = HttpStatus.CREATED, code = HttpStatus.CREATED)	
 	@ApiResponses(value = { 
 			@ApiResponse(code = 201, message = "Successfully pdv created"),
 			@ApiResponse(code = 401, message = "You are not authorized to create a pdv"),
 			@ApiResponse(code = 403, message = "Forbidden"),
 			@ApiResponse(code = 409, message = "Conflict") })
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody ResponseEntity<Long> create(@Valid @RequestBody PdvRequestDTO requestDto) throws PdvServerException {
-		return new ResponseEntity<Long>(pdvService.createOrUpdate(requestDto), HttpStatus.CREATED);
+	@ResponseBody ResponseEntity<String> create(@Valid @RequestBody PdvRequestDTO requestDto) throws PdvServerException {
+		return new ResponseEntity<String>(pdvService.create(requestDto), HttpStatus.CREATED);
 	}
-
-	/**
-	 * @param Code
-	 * @return {@link PdvResponseDTO}
-	 */
+	
 	@ApiOperation(value = "Get pdv by id", response = PdvResponseDTO.class)
+	@ResponseStatus(value = HttpStatus.OK, code = HttpStatus.OK)
 	@ApiResponses(value = { 
 			@ApiResponse(code = 200, message = "PdvResponseDTO object"),
 			@ApiResponse(code = 404, message = "The resource you were trying to reach is not found") })
 	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody ResponseEntity<PdvResponseDTO> getById(@PathVariable("id") Long id) {		
+	@ResponseBody ResponseEntity<PdvResponseDTO> getById(@PathVariable("id") String id) {		
 		return new ResponseEntity<PdvResponseDTO>(pdvService.getById(id), HttpStatus.OK);
 	}
-
-	/**
-	 * @param name
-	 * @return {@link PdvResponseDTO}
-	 */
+	
 	@ApiOperation(value = "Find nearest pdv from specific location", response = PdvResponseDTO.class)
+	@ResponseStatus(value = HttpStatus.OK, code = HttpStatus.OK)
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Given a specific lng & lat, return nearest pdv. Ex.: -49.379279, -20.816612"),
 			@ApiResponse(code = 404, message = "The resource you were trying to reach is not found") })
 	@GetMapping(value = "/findNearestPdv", produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody ResponseEntity<PdvResponseDTO> search(@RequestParam List<Double> coordinates) {		
+	@ResponseBody ResponseEntity<PdvResponseDTO> search(@RequestParam List<Double> coordinates) {		
 		return new ResponseEntity<PdvResponseDTO>(pdvService.search(coordinates), HttpStatus.OK);
 	}
 }

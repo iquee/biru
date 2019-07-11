@@ -15,8 +15,6 @@ import com.luiztaira.exception.PdvNotFoundException;
 import com.luiztaira.exception.PdvServerException;
 import com.luiztaira.repository.PdvRepository;
 import com.luiztaira.service.PdvService;
-import com.luiztaira.service.SequenceGeneratorService;
-import com.luiztaira.utils.NormalizeDocument;
 import com.luiztaira.web.rest.dto.PdvRequestDTO;
 import com.luiztaira.web.rest.dto.PdvResponseDTO;
 
@@ -26,19 +24,10 @@ public class PdvServiceImpl implements PdvService {
 	@Autowired
 	PdvRepository pdvRepository;
 
-	@Autowired
-	SequenceGeneratorService seqGenerator;
-
 	@Override
-	public Long createOrUpdate(PdvRequestDTO dto) throws PdvServerException {
+	public String create(PdvRequestDTO dto) throws PdvServerException {
 		Pdv pdv = convert(dto);
-		try {
-			if (pdv.getId() == null) {
-				// new pdv
-				pdv.setId(seqGenerator.generateSequence(Pdv.SEQUENCE_NAME));
-			} else {
-				// update pdv: not necessary right now
-			}
+		try {			
 			return pdvRepository.save(pdv).getId();
 		} catch (PdvServerException e) {
 			throw new PdvServerException("Error in create pdv: " + e.getMessage());
@@ -46,7 +35,7 @@ public class PdvServiceImpl implements PdvService {
 	}
 
 	@Override
-	public PdvResponseDTO getById(Long id) {
+	public PdvResponseDTO getById(String id) {
 		Optional<Pdv> optional = pdvRepository.findById(id);
 		if(optional.isPresent())
 			return new PdvResponseDTO(optional.get());
@@ -66,39 +55,13 @@ public class PdvServiceImpl implements PdvService {
 		}
 	}
 
-	/**
-	 * Method to validate fields
-	 * 
-	 * @throws PdvServerException
-	 */
-	@Override
-	public void validate(PdvRequestDTO dto) {
-		if(dto.getTradingName() == null || dto.getTradingName() == "")
-			throw new PdvServerException("Trading name must not be null");
-		
-		if(dto.getOwnerName() == null || dto.getOwnerName() == "")
-			throw new PdvServerException("Owner name must not be null");
-		
-		if(dto.getDocument() == null || dto.getDocument() == "")
-			throw new PdvServerException("Document must not be null");
-		
-		if(dto.getAddress() == null)
-			throw new PdvServerException("Address must not be null");		
-		
-		if(dto.getCoverageArea() == null)
-			throw new PdvServerException("Coverage area must not be null");
-	}
-
 	@Override
 	@SuppressWarnings("unchecked")
 	public Pdv convert(PdvRequestDTO dto) {
-		// before create final object, check if all fields are correct
-		validate(dto);
-
 		Pdv pdv = new Pdv();
 		pdv.setTradingName(dto.getTradingName());
 		pdv.setOwnerName(dto.getOwnerName());
-		pdv.setDocument(NormalizeDocument.normnalizeToStore(dto.getDocument()));
+		pdv.setDocument(dto.getDocument());
 
 		Map<String, Object> address = dto.getAddress();
 		List<Double> addressCoordinates = (List<Double>) address.get("coordinates");
