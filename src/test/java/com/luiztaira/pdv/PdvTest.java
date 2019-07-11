@@ -27,7 +27,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.annotation.Order;
 import org.springframework.dao.DuplicateKeyException;
 
-import com.luiztaira.exception.PdvException;
+import com.luiztaira.exception.PdvNotFoundException;
+import com.luiztaira.exception.PdvServerException;
 import com.luiztaira.service.PdvService;
 import com.luiztaira.web.rest.dto.PdvRequestDTO;
 import com.luiztaira.web.rest.dto.PdvResponseDTO;
@@ -55,7 +56,7 @@ public class PdvTest {
 			Object file = new JSONParser().parse(fileReader);
 			PdvTest.obj = (JSONObject) file;
 		} catch (IOException | ParseException e) {
-			throw new PdvException("File not found or invalid file: " + e.getMessage());
+			throw new PdvServerException("File not found or invalid file: " + e.getMessage());
 		}
 	}
 
@@ -111,7 +112,7 @@ public class PdvTest {
 	// fail tests
 	@Test
 	@Order(5)
-	public void testSavePdvExistedDocument() throws PdvException {
+	public void testSavePdvExistedDocument() throws PdvServerException {
 		DuplicateKeyException thrown = assertThrows(DuplicateKeyException.class,
 				() -> pdvService.createOrUpdate(buildPdv("Bar da Alegria", "João Risada", "25.221.259/0001-93")),
 				"Duplicate document");
@@ -120,10 +121,10 @@ public class PdvTest {
 	
 	@Test
 	@Order(6)
-	public void testPdvNotFound() throws PdvException {
-		PdvException thrown = assertThrows(PdvException.class,
-				() -> pdvService.getById(-1L), "No pdv found for id: -1");
-		assertTrue(thrown.getMessage().contains("No pdv found for id: -1"));
+	public void testPdvNotFound() throws Exception {
+		PdvNotFoundException thrown = assertThrows(PdvNotFoundException.class,
+				() -> pdvService.getById(-1L), "No PDV found for id: -1");
+		assertTrue(thrown.getMessage().contains("No PDV found for id: -1"));
 	}
 
 	private PdvRequestDTO buildPdv(String tradingName, String ownerName, String document) {
