@@ -1,10 +1,10 @@
+
 [![Build Status](https://travis-ci.org/iquee/biru.svg?branch=master)](https://travis-ci.org/iquee/biru)
 
-# Challenge
+Sample application, to create and get a single PDV(Ponto de Venda or Sales Point). There is also a service to find the nearest PDV from a specific location, through a longitude and latitude
 
-<p>This application is a solution for ZX Code Challenge | Backend</p>
 <p>The following technologies were used for the development:</p>
- 	
+
 * [Java 8](https://www.java.com/pt_BR/download/faq/java8.xml)
 * [Spring Boot](https://spring.io/projects/spring-boot) as MVC framework: [2.1.5.RELEASE](https://docs.spring.io/spring-boot/docs/2.1.5.RELEASE/reference/htmlsingle/)
 	- [spring-boot-starter-data-rest](https://spring.io/projects/spring-data-rest)	
@@ -55,8 +55,7 @@ After application have initialized
 
 ## Run Tests
 To execute tests, it's necessary to use the docker-compose. jUnit tests are executed with a embedded MongoDB.<br>
-- <em>Important 1: to run test, this [json](https://github.com/ZXVentures/code-challenge/blob/master/files/pdvs.json) will be imported on startup</em>
-- <em>Important 2: To verify the tests run successfully in a SaaS CI, access [Travis-CI](https://travis-ci.org/iquee/biru)</em><br>
+- <em>Important: To verify the tests run successfully in a SaaS CI, access [Travis-CI](https://travis-ci.org/iquee/biru)</em><br>
 
 	```sh
 	docker-compose -f docker-compose.test.yml up
