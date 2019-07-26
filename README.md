@@ -65,6 +65,3 @@ To execute tests, it's necessary to use the docker-compose. jUnit tests are exec
 Luiz Henrique K Taira - luizhtaira@gmail.com<br>
 Project Link: [https://github.com/iquee/biru](https://github.com/iquee/biru)<br>
 LinkedIn: [https://www.linkedin.com/in/lhktaira/](https://www.linkedin.com/in/lhktaira/)
-=======
-
-
