@@ -1,4 +1,4 @@
-package com.luiztaira.web.rest;
+package com.luiztaira.controller;
 
 /**
  * BaseController for Rest API's

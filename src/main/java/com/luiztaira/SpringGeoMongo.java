@@ -16,7 +16,7 @@ import com.github.mongobee.Mongobee;
  */
 @SpringBootApplication
 @EnableMongoRepositories
-public class BiruApplication {
+public class SpringGeoMongo {
 	
 	@Value("${spring.data.mongodb.host}")
 	private String mongoHost;
@@ -26,7 +26,7 @@ public class BiruApplication {
 	private String mongoSchema;
 
 	public static void main(String[] args) {
-		SpringApplication.run(BiruApplication.class, args);
+		SpringApplication.run(SpringGeoMongo.class, args);
 	}
 
 	@Bean

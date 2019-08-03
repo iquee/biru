@@ -4,12 +4,9 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.luiztaira</groupId>
-	<artifactId>biru</artifactId>
+	<artifactId>spring-geo-mongo</artifactId>
 	<version>1.0-0</version>
-	<packaging>jar</packaging>
-
-	<name>Biru App</name>
-	<description>Challenge for ZX</description>
+	<packaging>jar</packaging>	
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

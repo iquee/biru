@@ -1,4 +1,4 @@
-package com.luiztaira.web.rest;
+package com.luiztaira.controller;
 
 import java.util.Date;
 import java.util.LinkedHashMap;
@@ -18,19 +18,19 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import com.luiztaira.exception.PdvNotFoundException;
-import com.luiztaira.exception.PdvServerException;
+import com.luiztaira.exception.RestaurantNotFoundException;
+import com.luiztaira.exception.RestaurantServerException;
 
 
 @RestControllerAdvice
-public class PdvControllerAdvice extends ResponseEntityExceptionHandler {
+public class ControllerAdvice extends ResponseEntityExceptionHandler {
 	
-	@ExceptionHandler(PdvServerException.class)
+	@ExceptionHandler(RestaurantServerException.class)
 	public void handleInternatlServerError(HttpServletResponse response) throws Exception {
 		response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value());
 	}
 	
-	@ExceptionHandler(PdvNotFoundException.class)
+	@ExceptionHandler(RestaurantNotFoundException.class)
 	public void handleNotFound(HttpServletResponse response) throws Exception {
 		response.sendError(HttpStatus.NOT_FOUND.value());
 	}

@@ -4,14 +4,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-public class PdvServerException extends RuntimeException {
+public class RestaurantServerException extends RuntimeException {
 	
 	private static final long serialVersionUID = 1L;
 	
-	public PdvServerException() {		
+	public RestaurantServerException() {		
 	}
 	
-	public PdvServerException(String msg) {
+	public RestaurantServerException(String msg) {
 		super(msg);
 	}
 
