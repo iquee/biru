@@ -45,7 +45,7 @@ public class RestaurantTest {
 		String id = service.create(buildRestaurant("Restaurante Kiko", "João Risada", "20"));
 		RestaurantResponseDTO Restaurant = service.getById(id);
 		
-		assertThat(Restaurant.getTradingName(), equalTo("Restaurante Kiko"));
+		assertThat(Restaurant.getFantasyName(), equalTo("Restaurante Kiko"));
 		assertThat(Restaurant.getOwnerName(), equalTo("João Risada"));
 	}
 
@@ -57,7 +57,7 @@ public class RestaurantTest {
 		RestaurantResponseDTO Restaurant = service.search(coordinates);
 		
 		// based on restaurants.json file imported
-		assertThat(Restaurant.getTradingName(), equalTo("Cantina Nem Tanto"));		
+		assertThat(Restaurant.getFantasyName(), equalTo("Cantina Nem Tanto"));		
 	}
 
 	// fail tests

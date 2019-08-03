@@ -11,17 +11,19 @@ import com.luiztaira.utils.GeoJsonMultiPolygonSerializer;
 import com.luiztaira.utils.GeoJsonPointSerializer;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
 public class RestaurantResponseDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@ApiModelProperty(notes = "i", example = "5d25f8b95efa9e39005d83d1")
 	private String id;
 
-	@ApiModelProperty(notes = "Trading name", example = "Distribuidora TAP")
-	private String tradingName;
+	@ApiModelProperty(notes = "Fantasy name", example = "Distribuidora TAP")
+	private String fantasyName;
 
 	@ApiModelProperty(notes = "Nome of owner", example = "José Boêmio")
 	private String ownerName;
@@ -43,8 +45,9 @@ public class RestaurantResponseDTO implements Serializable {
 					+ document.substring(8, 12) + "-" + document.substring(12, 14);
 		return document;
 	}
-	
-	public static RestaurantResponseDTO convert(Restaurant restaurant) {		
-		return new RestaurantResponseDTO();
+
+	public static RestaurantResponseDTO convert(Restaurant restaurant) {
+		return new RestaurantResponseDTO(restaurant.getId(), restaurant.getFantasyName(), restaurant.getOwnerName(),
+				restaurant.getDocument(), restaurant.getAddress(), restaurant.getCoverageArea());
 	}
 }

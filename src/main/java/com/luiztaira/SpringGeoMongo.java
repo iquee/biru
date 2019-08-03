@@ -8,12 +8,6 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 import com.github.mongobee.Mongobee;
 
-/**
- * Class to run the Spring Boot application with embedded services
- *
- * @author taira
- *
- */
 @SpringBootApplication
 @EnableMongoRepositories
 public class SpringGeoMongo {

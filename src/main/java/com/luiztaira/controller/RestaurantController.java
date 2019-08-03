@@ -48,8 +48,8 @@ public class RestaurantController extends BaseController {
 			@ApiResponse(code = 401, message = "You are not authorized to create a restaurant"),
 			@ApiResponse(code = 403, message = "Forbidden"),
 			@ApiResponse(code = 409, message = "Conflict") })
-	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody ResponseEntity<String> create(@Valid @RequestBody RestaurantRequestDTO requestDto) throws RestaurantServerException {
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+	ResponseEntity<String> create(@Valid @RequestBody RestaurantRequestDTO requestDto) throws RestaurantServerException {
 		return new ResponseEntity<String>(restService.create(requestDto), HttpStatus.CREATED);
 	}
 	

@@ -21,7 +21,6 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import com.luiztaira.exception.RestaurantNotFoundException;
 import com.luiztaira.exception.RestaurantServerException;
 
-
 @RestControllerAdvice
 public class ControllerAdvice extends ResponseEntityExceptionHandler {
 	

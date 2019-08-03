@@ -21,10 +21,9 @@ public class RestaurantServiceImpl implements RestaurantService {
 	RestaurantRepository repository;
 
 	@Override
-	public String create(RestaurantRequestDTO dto) throws RestaurantServerException {
-		Restaurant r = convert(dto);
+	public String create(RestaurantRequestDTO dto) throws RestaurantServerException {		
 		try {			
-			return repository.save(r).getId();
+			return repository.save(convert(dto)).getId();
 		} catch (RestaurantServerException e) {
 			throw new RestaurantServerException("Error in create restaurant: " + e.getMessage());
 		}
@@ -52,7 +51,6 @@ public class RestaurantServiceImpl implements RestaurantService {
 	}
 
 	@Override
-	@SuppressWarnings("unchecked")
 	public Restaurant convert(RestaurantRequestDTO dto) {
 		return Restaurant.convert(dto);
 	}
