@@ -21,21 +21,27 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import com.luiztaira.exception.RestaurantNotFoundException;
 import com.luiztaira.exception.RestaurantServerException;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 @RestControllerAdvice
-public class ControllerAdvice extends ResponseEntityExceptionHandler {
+public class ControllerAdvice extends ResponseEntityExceptionHandler {    
 	
 	@ExceptionHandler(RestaurantServerException.class)
-	public void handleInternatlServerError(HttpServletResponse response) throws Exception {
+	public void handleInternatlServerError(HttpServletResponse response, RestaurantServerException ex) throws Exception {
+		log.error(ex.getMessage());
 		response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value());
 	}
 	
 	@ExceptionHandler(RestaurantNotFoundException.class)
-	public void handleNotFound(HttpServletResponse response) throws Exception {
+	public void handleNotFound(HttpServletResponse response, RestaurantNotFoundException ex) throws Exception {
+		log.error(ex.getMessage());
 		response.sendError(HttpStatus.NOT_FOUND.value());
 	}
 
 	@ExceptionHandler(DuplicateKeyException.class)
-	public void handleConflictException(HttpServletResponse response) throws Exception {		
+	public void handleConflictException(HttpServletResponse response, DuplicateKeyException ex) throws Exception {
+		log.error(ex.getMessage());
 		response.sendError(HttpStatus.CONFLICT.value());
 	}
 	

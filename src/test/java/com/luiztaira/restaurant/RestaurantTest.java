@@ -2,6 +2,7 @@ package com.luiztaira.restaurant;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -12,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,6 +25,9 @@ import com.luiztaira.exception.RestaurantNotFoundException;
 import com.luiztaira.exception.RestaurantServerException;
 import com.luiztaira.service.RestaurantService;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 @SpringBootTest
 public class RestaurantTest {
 
@@ -63,10 +68,13 @@ public class RestaurantTest {
 	// fail tests
 	@Test
 	public void testSaveRestaurantExistedDocument() throws RestaurantServerException {
-		DuplicateKeyException thrown = assertThrows(DuplicateKeyException.class,
-				() -> service.create(buildRestaurant("Restaurante Ocoto", "João Felix", "20")),
-				"Duplicate document");
-		assertTrue(thrown.getMessage().contains("25221259"));
+		RestaurantRequestDTO r = buildRestaurant("Restaurante Ocoto", "João Felix", "0101010101010101");		
+		service.create(r);
+		try {
+			service.create(r);
+		} catch (RuntimeException e) {
+			assertThat(e.getMessage(), CoreMatchers.containsString("duplicate key"));
+		}
 	}
 	
 	@Test

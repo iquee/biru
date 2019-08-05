@@ -15,4 +15,7 @@ public class RestaurantServerException extends RuntimeException {
 		super(msg);
 	}
 
+	public RestaurantServerException(String msg, Throwable cause) {
+		super(msg, cause);
+	}
 }
