@@ -6,4 +6,4 @@ branches:
 script:
  - mvn test
 jdk:
- - oraclejdk8
+ - oraclejdk9
