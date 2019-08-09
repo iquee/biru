@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/iquee/biru.svg?branch=master)](https://travis-ci.org/iquee/biru)
+[![Build Status](https://travis-ci.org/iquee/spring-geo-mongo.svg?branch=master)](https://travis-ci.org/iquee/spring-geo-mongo)
 
-Sample application, to create and get a single PDV(Ponto de Venda or Sales Point). There is also a service to find the nearest PDV from a specific location, through a longitude and latitude
+Sample application, to create and get a single Restaurant. There is also a service to find the nearest Restaurant from a specific location, through a longitude and latitude and check if it delivery to a specific area
 
 <p>The following technologies were used for the development:</p>
 
@@ -28,7 +28,7 @@ There are two ways to run the application.<br>
 
 First, clone the repository, access the folder and execute these commands in root directory to:
 
-1. <strong>by docker-compose</strong>: enter this command to pull automatic biru-springboot and mongo from Docker Hub. 
+1. <strong>by docker-compose</strong>: enter this command to pull automatic spring-geo-mongo and mongo from Docker Hub. 
 	```sh
 	docker-compose -f docker-compose.yml up
     ```
@@ -38,10 +38,10 @@ First, clone the repository, access the folder and execute these commands in roo
 	docker run -d -p 27017:27017 --name mongo mongo
     ```    
     ```sh
-	docker build -t iquee/biru .
+	docker build -t iquee/spring-geo-mongo .
     ```	
     ```sh
-	docker run --link mongo --name biru-spring-boot -p 9000:9000 iquee/biru
+	docker run --link mongo --name spring-geo-mongo -p 9000:9000 iquee/spring-geo-mongo
     ```
     <em>If you have created image, Docker will use it. If not, Docker will pull from Docker Hub.</em>
 
@@ -54,7 +54,7 @@ After application have initialized
 
 ## Run Tests
 To execute tests, it's necessary to use the docker-compose. jUnit tests are executed with a embedded MongoDB.<br>
-- <em>Important: To verify the tests run successfully in a SaaS CI, access [Travis-CI](https://travis-ci.org/iquee/biru)</em><br>
+- <em>Important: To verify the tests run successfully in a SaaS CI, access [Travis-CI](https://travis-ci.org/iquee/spring-geo-mongo)</em><br>
 
 	```sh
 	docker-compose -f docker-compose.test.yml up
@@ -63,8 +63,5 @@ To execute tests, it's necessary to use the docker-compose. jUnit tests are exec
 ## Contact
 
 Luiz Henrique K Taira - luizhtaira@gmail.com<br>
-Project Link: [https://github.com/iquee/biru](https://github.com/iquee/biru)<br>
+Project Link: [https://github.com/iquee/spring-geo-mongo](https://github.com/iquee/spring-geo-mongo)<br>
 LinkedIn: [https://www.linkedin.com/in/lhktaira/](https://www.linkedin.com/in/lhktaira/)
-=======
-
-

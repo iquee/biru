@@ -1,8 +1,8 @@
 {
-    "pdvs": [
+    "restaurants": [
        {          
-          "tradingName": "Adega Osasco",
-          "ownerName": "Ze da Ambev",
+          "fantasyName": "Restaurante Osasco",
+          "ownerName": "Jose Mano",
           "document": "02.453.716/000170",
           "coverageArea": {
              "type": "MultiPolygon",
@@ -134,8 +134,8 @@
           }
        },
        {          
-          "tradingName": "Adega Pinheiros",
-          "ownerName": "Ze da Silva",
+          "fantasyName": "Restaurante Santos",
+          "ownerName": "Jose da Silva",
           "document": "04.433.714/0001-44",
           "coverageArea": {
              "type": "MultiPolygon",
@@ -283,7 +283,7 @@
           }
        },
        {          
-          "tradingName": "Adega Sao Paulo",
+          "fantasyName": "Restaurante Sao Paulo",
           "ownerName": "Pedro Silva",
           "document": "04666182390",
           "coverageArea": {
@@ -428,7 +428,7 @@
           }
        },
        {          
-          "tradingName": "Bar do Ze",
+          "fantasyName": "Cantina do Jose",
           "ownerName": "Joao Silva",
           "document": "04698149428",
           "coverageArea": {
@@ -565,7 +565,7 @@
           }
        },
        {
-          "tradingName": "Bar Legal",
+          "fantasyName": "Cantina Legal",
           "ownerName": "Fernando Silva",
           "document": "05202839000126",
           "coverageArea": {
@@ -630,7 +630,7 @@
           }
        },
        {
-          "tradingName": "Bar Nem Tanto",
+          "fantasyName": "Cantina Nem Tanto",
           "ownerName": "Lucas Satto",
           "document": "06.269.410/0001-19",
           "coverageArea": {
@@ -815,7 +815,7 @@
           }
        },
        {
-          "tradingName": "Mercado Pinheiros",
+          "fantasyName": "Mercado Pinheiros",
           "ownerName": "Luiz Santo",
           "document": "06004905000116",
           "coverageArea": {
@@ -916,7 +916,7 @@
           }
        },
        {
-          "tradingName": "Adega Ambev",
+          "fantasyName": "Restaurante Rudi",
           "ownerName": "Felipe Rudenberg",
           "document": "07.691.399/0001-43",
           "coverageArea": {
@@ -1077,8 +1077,8 @@
           }
        },
        {
-          "tradingName": "Ze da Ambev",
-          "ownerName": "Ze Legal",
+          "fantasyName": "Beco Legal",
+          "ownerName": "Jose Legal",
           "document": "07.710.066/0001-14",
           "coverageArea": {
              "type": "MultiPolygon",
@@ -1266,7 +1266,7 @@
           }
        },
        {
-          "tradingName": "Emporio legal",
+          "fantasyName": "Emporio legal",
           "ownerName": "Leonardo Cruz",
           "document": "081.914.699-44",
           "coverageArea": {
@@ -1391,7 +1391,7 @@
           }
        },
        {
-          "tradingName": "Emporio Pinheiros",
+          "fantasyName": "Emporio Pinheiros",
           "ownerName": "Rai da Silva",
           "document": "09.201.319/0001-50",
           "coverageArea": {
@@ -1464,8 +1464,8 @@
           }
        },
        {
-          "tradingName": "Adega Emporio",
-          "ownerName": "Ronaldinho gaucho",
+          "fantasyName": "Restaurante Yuo",
+          "ownerName": "You Chin",
           "document": "09.444.848/0001-84",
           "coverageArea": {
              "type": "MultiPolygon",
@@ -1565,8 +1565,8 @@
           }
        },
        {
-          "tradingName": "Adega do Joao",
-          "ownerName": "Messi Pele",
+          "fantasyName": "Restaurante do Nuno",
+          "ownerName": "Leo Vim",
           "document": "10.144.318/0001-08",
           "coverageArea": {
              "type": "MultiPolygon",
@@ -1710,8 +1710,8 @@
           }
        },
        {
-          "tradingName": "Joao do Emporio",
-          "ownerName": "Pele Maradona",
+          "fantasyName": "Joao do Emporio",
+          "ownerName": "Sil Carlw",
           "document": "10.899.700/0001-13",
           "coverageArea": {
              "type": "MultiPolygon",
@@ -1823,8 +1823,8 @@
           }
        },
        {
-          "tradingName": "Emporio da Cerveja",
-          "ownerName": "Joao Maradona",
+          "fantasyName": "Emporio da Carne",
+          "ownerName": "Joao Marco",
           "document": "11.863.940/0001-20",
           "coverageArea": {
              "type": "MultiPolygon",
@@ -1940,8 +1940,8 @@
           }
        },
        {
-          "tradingName": "Ze Delivery",
-          "ownerName": "Pele da Silva",
+          "fantasyName": "Espetinhos OPA",
+          "ownerName": "Issa Silva",
           "document": "13.082.397/000150",
           "coverageArea": {
              "type": "MultiPolygon",
@@ -2029,8 +2029,8 @@
           }
        },
        {
-          "tradingName": "Behoppy",
-          "ownerName": "Daniboy",
+          "fantasyName": "You back",
+          "ownerName": "Fabio Full",
           "document": "13210.058/0001-01",
           "coverageArea": {
              "type": "MultiPolygon",
@@ -2158,7 +2158,7 @@
           }
        },
        {
-          "tradingName": "SOS Cerveja",
+          "fantasyName": "Churrascos Vila",
           "ownerName": "Daniel Henrique",
           "document": "15.127.213/0001-56",
           "coverageArea": {
@@ -2619,7 +2619,7 @@
           }
        },
        {
-          "tradingName": "Noiz Cerveja",
+          "fantasyName": "Noiz Carne",
           "ownerName": "Eduardo Pedroso",
           "document": "15.187.572/0001-07",
           "coverageArea": {
@@ -2688,8 +2688,8 @@
           }
        },
        {
-          "tradingName": "Ze Repoe",
-          "ownerName": "Eduardo Piroco",
+          "fantasyName": "China IN",
+          "ownerName": "Shing Chan",
           "document": "15.562.297/0001-56",
           "coverageArea": {
              "type": "MultiPolygon",
@@ -2873,8 +2873,8 @@
           }
        },
        {
-          "tradingName": "Adega Osasco",
-          "ownerName": "Pele Maradona",
+          "fantasyName": "Restaurante Osasco",
+          "ownerName": "Gou Lin",
           "document": "16.572.053/0001-17",
           "coverageArea": {
              "type": "MultiPolygon",
@@ -3166,8 +3166,8 @@
           }
        },
        {
-          "tradingName": "Adega Pinheiros",
-          "ownerName": "Joao Maradona",
+          "fantasyName": "Restaurante Pinheiros",
+          "ownerName": "Joao Plinio",
           "document": "18.293.334/0001-66",
           "coverageArea": {
              "type": "MultiPolygon",
@@ -3267,8 +3267,8 @@
           }
        },
        {
-          "tradingName": "Adega Sao Paulo",
-          "ownerName": "Pele da Silva",
+          "fantasyName": "Restaurante Sao Paulo",
+          "ownerName": "Fulano da Silva",
           "document": "19.024.189/0001-80",
           "coverageArea": {
              "type": "MultiPolygon",
@@ -3412,8 +3412,8 @@
           }
        },
        {
-          "tradingName": "Bar do Ze",
-          "ownerName": "Daniboy",
+          "fantasyName": "Cantina do Jose",
+          "ownerName": "Doug Blas",
           "document": "19.280.240/0001-15",
           "coverageArea": {
              "type": "MultiPolygon",
@@ -3541,7 +3541,7 @@
           }
        },
        {
-          "tradingName": "Bar Legal",
+          "fantasyName": "Cantina Legal",
           "ownerName": "Daniel Henrique",
           "document": "20.053.623/0001-30",
           "coverageArea": {
@@ -3726,8 +3726,8 @@
           }
        },
        {
-          "tradingName": "Bar Nem Tanto",
-          "ownerName": "Daniboy",
+          "fantasyName": "Cantina Nem Tanto",
+          "ownerName": "Dan White",
           "document": "20.194.088/0001-37",
           "coverageArea": {
              "type": "MultiPolygon",
@@ -3939,7 +3939,7 @@
           }
        },
        {
-          "tradingName": "Mercado Pinheiros",
+          "fantasyName": "Mercado Pinheiros",
           "ownerName": "Daniel Henrique",
           "document": "21.579.095/0001-10",
           "coverageArea": {
@@ -4044,7 +4044,7 @@
           }
        },
        {
-          "tradingName": "Adega Ambev",
+          "fantasyName": "KG Novo",
           "ownerName": "Eduardo Pedroso",
           "document": "21.658.641/0001-08",
           "coverageArea": {
@@ -4149,8 +4149,8 @@
           }
        },
        {
-          "tradingName": "Ze da Ambev",
-          "ownerName": "Eduardo Piroco",
+          "fantasyName": "Poucas Novas",
+          "ownerName": "Carl Ed",
           "document": "22.15.127.213/0001-56.752/0001-90",
           "coverageArea": {
              "type": "MultiPolygon",
@@ -4254,8 +4254,8 @@
           }
        },
        {
-          "tradingName": "Emporio legal",
-          "ownerName": "Ze da Ambev",
+          "fantasyName": "Emporio legal",
+          "ownerName": "Jose Tuler",
           "document": "22512343000178",
           "coverageArea": {
              "type": "MultiPolygon",
@@ -4311,8 +4311,8 @@
           }
        },
        {
-          "tradingName": "Emporio Pinheiros",
-          "ownerName": "Ze da Ambev",
+          "fantasyName": "Emporio Pinheiros",
+          "ownerName": "Jose Pinho",
           "document": "22745914/0001-14",
           "coverageArea": {
              "type": "MultiPolygon",
@@ -4388,8 +4388,8 @@
           }
        },
        {
-          "tradingName": "Adega Emporio",
-          "ownerName": "Ze da Silva",
+          "fantasyName": "Restaurante CDZ",
+          "ownerName": "Jose da Silva",
           "document": "23.254.882/0001-17",
           "coverageArea": {
              "type": "MultiPolygon",
@@ -4485,7 +4485,7 @@
           }
        },
        {
-          "tradingName": "Adega do Joao",
+          "fantasyName": "Restaurante da Vilma",
           "ownerName": "Pedro Silva",
           "document": "23.459.215/0001-70",
           "coverageArea": {
@@ -4722,7 +4722,7 @@
           }
        },
        {
-          "tradingName": "Joao do Emporio",
+          "fantasyName": "Joao do Emporio",
           "ownerName": "Joao Silva",
           "document": "23.680.471/0001-93",
           "coverageArea": {
@@ -4819,7 +4819,7 @@
           }
        },
        {
-          "tradingName": "Emporio da Cerveja",
+          "fantasyName": "Bow Issa",
           "ownerName": "Fernando Silva",
           "document": "23.934.782/0001-31",
           "coverageArea": {
@@ -4924,7 +4924,7 @@
           }
        },
        {
-          "tradingName": "Ze Delivery",
+          "fantasyName": "Kou",
           "ownerName": "Lucas Satto",
           "document": "23840372000121",
           "coverageArea": {
@@ -5029,7 +5029,7 @@
           }
        },
        {
-          "tradingName": "Behoppy",
+          "fantasyName": "Behoppy",
           "ownerName": "Luiz Santo",
           "document": "24.522.169/0001-70",
           "coverageArea": {
@@ -5078,7 +5078,7 @@
           }
        },
        {
-          "tradingName": "SOS Cerveja",
+          "fantasyName": "SOS Carne",
           "ownerName": "Felipe Rudenberg",
           "document": "24302190/0001-60",
           "coverageArea": {
@@ -5159,8 +5159,8 @@
           }
        },
        {
-          "tradingName": "Noiz Cerveja",
-          "ownerName": "Ze Legal",
+          "fantasyName": "Noiz Carne",
+          "ownerName": "Jose Legal",
           "document": "25.039.008/0001-92",
           "coverageArea": {
              "type": "MultiPolygon",
@@ -5332,7 +5332,7 @@
           }
        },
        {
-          "tradingName": "Ze Repoe",
+          "fantasyName": "Jose Repoe",
           "ownerName": "Leonardo Cruz",
           "document": "25.175.276/0001-31",
           "coverageArea": {
@@ -5481,7 +5481,7 @@
           }
        },
        {
-          "tradingName": "Adega Sao Paulo",
+          "fantasyName": "Restaurante Tico",
           "ownerName": "Rai da Silva",
           "document": "26.091.851/0001-80",
           "coverageArea": {
@@ -5574,8 +5574,8 @@
           }
        },
        {
-          "tradingName": "Bar do Ze",
-          "ownerName": "Ronaldinho gaucho",
+          "fantasyName": "Cantina do Jose",
+          "ownerName": "Ze galo",
           "document": "26.617.478/0001-59",
           "coverageArea": {
              "type": "MultiPolygon",
@@ -5659,8 +5659,8 @@
           }
        },
        {
-          "tradingName": "Bar Legal",
-          "ownerName": "Messi Pele",
+          "fantasyName": "Cantina Legal",
+          "ownerName": "Iuru Pulo",
           "document": "26.810.612/0001-33",
           "coverageArea": {
              "type": "MultiPolygon",
@@ -5856,8 +5856,8 @@
           }
        },
        {
-          "tradingName": "Bar Nem Tanto",
-          "ownerName": "Pele Maradona",
+          "fantasyName": "Cantina Nem Tanto",
+          "ownerName": "Otto Neto",
           "document": "27494912000113",
           "coverageArea": {
              "type": "MultiPolygon",
@@ -5917,8 +5917,8 @@
           }
        },
        {
-          "tradingName": "Mercado Pinheiros",
-          "ownerName": "Joao Maradona",
+          "fantasyName": "Mercado Carmo",
+          "ownerName": "Joao Poul",
           "document": "27865490000145",
           "coverageArea": {
              "type": "MultiPolygon",
@@ -6014,8 +6014,8 @@
           }
        },
        {
-          "tradingName": "Adega Ambev",
-          "ownerName": "Pele da Silva",
+          "fantasyName": "Restaurante Opaco",
+          "ownerName": "Sil Carlw",
           "document": "36211693850",
           "coverageArea": {
              "type": "MultiPolygon",
@@ -6251,8 +6251,8 @@
           }
        },
        {
-          "tradingName": "Ze da Ambev",
-          "ownerName": "Daniboy",
+          "fantasyName": "Bar Now",
+          "ownerName": "Rick Lou",
           "document": "54321515000112",
           "coverageArea": {
              "type": "MultiPolygon",
@@ -6512,7 +6512,7 @@
           }
        },
        {
-          "tradingName": "Bar do Ze",
+          "fantasyName": "Cantina do Jose",
           "ownerName": "Daniel Henrique",
           "document": "62638527000101",
           "coverageArea": {
@@ -6737,7 +6737,7 @@
           }
        },
        {
-          "tradingName": "Bar Legal",
+          "fantasyName": "Cantina Legal",
           "ownerName": "Eduardo Pedroso",
           "document": "73.068.991/0001-18",
           "coverageArea": {
@@ -6870,8 +6870,8 @@
           }
        },
        {
-          "tradingName": "Adega Emporio",
-          "ownerName": "Eduardo Piroco",
+          "fantasyName": "Restaurante Was",
+          "ownerName": "Eduardo Polaco",
           "document": "82.666.231/0001-01",
           "coverageArea": {
              "type": "MultiPolygon",
@@ -6911,8 +6911,8 @@
           }
        },
        {
-          "tradingName": "Adega do Joao",
-          "ownerName": "Pele Maradona",
+          "fantasyName": "Restaurante do Joao",
+          "ownerName": "Pato Largo",
           "document": "960361.506-44",
           "coverageArea": {
              "type": "MultiPolygon",

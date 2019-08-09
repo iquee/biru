@@ -1,4 +1,4 @@
-package com.luiztaira.web.rest;
+package com.luiztaira.controller;
 
 import java.util.Date;
 import java.util.LinkedHashMap;
@@ -18,25 +18,30 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import com.luiztaira.exception.PdvNotFoundException;
-import com.luiztaira.exception.PdvServerException;
+import com.luiztaira.exception.RestaurantNotFoundException;
+import com.luiztaira.exception.RestaurantServerException;
 
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 @RestControllerAdvice
-public class PdvControllerAdvice extends ResponseEntityExceptionHandler {
+public class ControllerAdvice extends ResponseEntityExceptionHandler {    
 	
-	@ExceptionHandler(PdvServerException.class)
-	public void handleInternatlServerError(HttpServletResponse response) throws Exception {
+	@ExceptionHandler(RestaurantServerException.class)
+	public void handleInternatlServerError(HttpServletResponse response, RestaurantServerException ex) throws Exception {
+		log.error(ex.getMessage());
 		response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value());
 	}
 	
-	@ExceptionHandler(PdvNotFoundException.class)
-	public void handleNotFound(HttpServletResponse response) throws Exception {
+	@ExceptionHandler(RestaurantNotFoundException.class)
+	public void handleNotFound(HttpServletResponse response, RestaurantNotFoundException ex) throws Exception {
+		log.error(ex.getMessage());
 		response.sendError(HttpStatus.NOT_FOUND.value());
 	}
 
 	@ExceptionHandler(DuplicateKeyException.class)
-	public void handleConflictException(HttpServletResponse response) throws Exception {		
+	public void handleConflictException(HttpServletResponse response, DuplicateKeyException ex) throws Exception {
+		log.error(ex.getMessage());
 		response.sendError(HttpStatus.CONFLICT.value());
 	}
 	

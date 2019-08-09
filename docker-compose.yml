@@ -3,25 +3,25 @@ version: '3.1'
 services:
   springboot:
     build: .
-    image: iquee/biru:latest
-    container_name: biru-springboot-compose
+    image: iquee/spring-geo-mongo:latest
+    container_name: spring-compose
     ports:
       - 9000:9000
     working_dir: /opt/app
     networks:
-      - zx
+      - xyz
     depends_on:
       - mongo
   
   mongo:
     image: mongo
-    container_name: biru-mongo-compose
+    container_name: mongo-compose
     networks:
-      - zx
+      - xyz
     ports:  
       - 27017:27017
     volumes:
-      - $HOME/docker/biru/mongodb:/data/db
+      - $HOME/docker/spring-geo-mongo/mongodb:/data/db
     
 networks:
-  zx:
+  xyz:
