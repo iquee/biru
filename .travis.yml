@@ -1,9 +1,11 @@
 language: java
 branches:
   only:
-  - master
-  - stable
+    - master
+    - stable
 script:
- - mvn test
+  - mvn -N io.takari:maven:wrapper
+  - ./mvnw install
+  - mvn test
 jdk:
- - oraclejdk9
+  - oraclejdk9
