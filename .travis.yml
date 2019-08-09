@@ -3,9 +3,7 @@ branches:
   only:
     - master
     - stable
-script:
-  - mvn -N io.takari:maven:wrapper
-  - ./mvnw install
-  - mvn test
+install: true
+script: ./mvnw test
 jdk:
   - oraclejdk9
