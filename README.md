@@ -6,7 +6,6 @@ Sample application, to create and get a single Restaurant. There is also a servi
 ##### Prerequisites:
 * docker and docker-compose installed<br>
 
-<strong>by docker-compose</strong>: enter this command to pull automatic spring-geo-mongo and mongo from Docker Hub. 
 	```sh
 	docker-compose -f docker-compose.yml up
 
@@ -21,4 +20,3 @@ To execute tests, it's necessary to use the docker-compose. jUnit tests are exec
 
 	```sh
 	docker-compose -f docker-compose.test.yml up
-    ```
