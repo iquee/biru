@@ -13,7 +13,7 @@ import org.springframework.util.ResourceUtils;
 
 import com.github.mongobee.changeset.ChangeLog;
 import com.github.mongobee.changeset.ChangeSet;
-import com.luiztaira.domain.Pdv;
+import com.luiztaira.domain.Restaurant;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
@@ -28,29 +28,29 @@ import com.mongodb.DBObject;
 @ChangeLog
 public class DatabaseChangelog {
 
-	@ChangeSet(order = "01", id = "loadPdvs", author = "luiz.taira")
-	public void loadPdvs(final DB db) throws Exception {
-		DBCollection col = db.getCollectionFromString(Pdv.COLLECTION_NAME);
+	@ChangeSet(order = "01", id = "loadRestaurants", author = "luiz.taira")
+	public void loadRestaurants(final DB db) throws Exception {
+		DBCollection col = db.getCollectionFromString(Restaurant.COLLECTION_NAME);
 
 		try {
-			File file = ResourceUtils.getFile("classpath:pdvs.json");
+			File file = ResourceUtils.getFile("classpath:restaurants.json");
 			FileReader fileReader = new FileReader(file);						
 			Object json = new JSONParser().parse(fileReader);
 			JSONObject obj = (JSONObject) json;
-			JSONArray pdvs = (JSONArray) obj.get("pdvs");
-			for (int i = 0; i < pdvs.size(); i++) {
-				JSONObject pdvJson = (JSONObject) pdvs.get(i);
-				Map<String, Object> address = (Map<String, Object>) pdvJson.get("address");
-				Map<String, Object> coverageArea = (Map<String, Object>) pdvJson.get("coverageArea");
+			JSONArray restaurrants = (JSONArray) obj.get("restaurants");
+			for (int i = 0; i < restaurrants.size(); i++) {
+				JSONObject rJson = (JSONObject) restaurrants.get(i);
+				Map<String, Object> address = (Map<String, Object>) rJson.get("address");
+				Map<String, Object> coverageArea = (Map<String, Object>) rJson.get("coverageArea");
 
-				DBObject pdv = new BasicDBObject();
-				pdv.put("tradingName", pdvJson.get("tradingName"));
-				pdv.put("ownerName", pdvJson.get("ownerName"));
-				pdv.put("document", pdvJson.get("document"));
-				pdv.put("address", address);
-				pdv.put("coverageArea", coverageArea);
+				DBObject r = new BasicDBObject();
+				r.put("fantasyName", rJson.get("fantasyName"));
+				r.put("ownerName", rJson.get("ownerName"));
+				r.put("document", rJson.get("document"));
+				r.put("address", address);
+				r.put("coverageArea", coverageArea);
 				
-				col.insert(pdv);
+				col.insert(r);
 			}
 
 		} catch (IOException | ParseException e) {

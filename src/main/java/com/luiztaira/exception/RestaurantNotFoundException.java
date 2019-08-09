@@ -4,19 +4,19 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.NOT_FOUND)
-public class PdvNotFoundException extends RuntimeException {
+public class RestaurantNotFoundException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 
-	public PdvNotFoundException() {
+	public RestaurantNotFoundException() {
 		super();
 	}
 
-	public PdvNotFoundException(String msg) {
+	public RestaurantNotFoundException(String msg) {
 		super(msg);
 	}
 
-	public PdvNotFoundException(String message, Throwable cause) {
+	public RestaurantNotFoundException(String message, Throwable cause) {
 		super(message, cause);
 	}
 }
