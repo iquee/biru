@@ -1,6 +1,2 @@
-language: java
-jdk: oraclejdk9
-sudo: false
-script:
-  - mvn -N io.takari:maven:wrapper
-  - mvn clean verify
+jdk: openjdk11
+script: ./mvnw test -B
