@@ -1,9 +1,4 @@
 language: java
-branches:
-  only:
-    - master
-    - stable
-install: true
-script: ./mvnw test
-jdk:
-  - oraclejdk9
+jdk: oraclejdk9
+sudo: false
+script: mvn clean verify
