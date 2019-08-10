@@ -3,7 +3,7 @@
 Sample application, to create and get a single Restaurant. There is also a service to find the nearest Restaurant from a specific location, through a longitude and latitude and check if it delivery to a specific area
 
 ## Usage
-##### Prerequisites:
+##### Pre-requisites:
 * docker and docker-compose installed<br>
 
 	```sh
