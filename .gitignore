@@ -4,10 +4,11 @@
 *.project
 .settings
 .vscod
-.idea/e
+.idea/
 
 # Log file
 *.log
+*.iml
 
 # BlueJ files
 *.ctxt
